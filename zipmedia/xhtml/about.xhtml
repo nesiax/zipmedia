@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en" xml:lang="en"
+      tal:define="master load: main_template.xhtml"
+      metal:use-macro="master.macros.layout"
+      i18n:domain="zipmedia"
+      >
+  <head>
+
+    <!-- Add deform if we need it. -->
+    <metal:block fill-slot="deform">
+      <metal:block
+          tal:condition="exists: form_rendered"
+          tal:define="head load: head.xhtml"
+          use-macro="head.macros.deform"
+          />
+    </metal:block>
+
+  </head>
+
+  <body>
+
+    <div metal:fill-slot="content">
+
+      <pre tal:content="the_license | default">
+        ZipMedia : A web app to publish and compress on the fly directories.
+        Copyright (C) &lt;2020&gt; Nestor A. Diaz &lt;nestor@tiendalinux.com&gt;
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.
+      </pre>
+    </div>
+
+    <div tal:comment="Emacs configuration"
+         tal:condition="nothing">
+      <!--
+          For Emacs:
+          Local Variables:
+          mode: nxml
+          eval: (rng-set-vacuous-schema)
+          coding: utf-8
+          End:
+      -->
+    </div>
+
+  </body>
+</html>

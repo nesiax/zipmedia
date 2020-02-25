@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:define="master load: main_template.xhtml"
+      metal:use-macro="master.macros.layout"
+      i18n:domain="zipmedia"
+      >
+  <head>
+
+    <!-- Add deform if we need it. -->
+    <metal:block fill-slot="deform">
+      <metal:block
+          tal:condition="exists: form_rendered"
+          tal:define="head load: head.xhtml"
+          use-macro="head.macros.deform"
+          />
+    </metal:block>
+
+  </head>
+
+  <body>
+
+    <div metal:fill-slot="content">
+
+      <div class="panel panel-primary" tal:condition="exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title" tal:content="form_title | default">Download</h3>
+        </div>
+        <div class="panel-body">
+          <div id="form" tal:content="structure form_rendered"/>
+        </div>
+      </div>
+
+
+      <!-- begin: mockup -->
+
+      <div class="panel panel-primary" tal:condition="not: exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title"
+              >Download photos and videos from your flight</h3>
+        </div>
+        <div class="panel-body">
+
+
+          <div id="form"><form
+                             id="deform"
+                             method="POST"
+                             enctype="multipart/form-data"
+                             accept-charset="utf-8" class="deform"
+                             action="download.xhtml"
+                             >
+
+            <fieldset class="deform-form-fieldset">
+
+              <input type="hidden" name="_charset_" />
+              <input type="hidden" name="__formid__" value="deform"/>
+
+
+              <div
+                  class="form-group  "
+                  title="Enter some text"
+                  id="item-deformField1">
+
+                <label for="deformField1"
+                       class="control-label required"
+                       id="req-deformField1"
+                       >
+                  Identifiación
+                </label>
+
+
+                <input type="text" name="text" value=""
+                       id="deformField1" class=" form-control "/>
+
+
+                <p
+                    class="help-block" >
+                  Favor digite su identificación
+                </p>
+              </div>
+
+
+              <div class="form-group">
+
+                <button
+                    id="deformsubmit"
+                    name="submit"
+                    type="submit"
+                    class="btn btn-primary "
+                    value="submit">
+
+                  Submit
+                </button>
+
+              </div>
+
+            </fieldset>
+
+          </form>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="panel panel-primary" tal:condition="not: exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title">Descarga los videos y fotos de tu vuelo</h3>
+        </div>
+        <div class="panel-body">
+
+
+
+          <div id="form"><form
+                             id="deform"
+                             method="POST"
+                             enctype="multipart/form-data"
+                             accept-charset="utf-8" class="deform"
+                             action="download.xml"
+                             >
+
+            <fieldset class="deform-form-fieldset">
+
+
+
+              <input type="hidden" name="_charset_" />
+              <input type="hidden" name="__formid__" value="deform"/>
+
+              <div class="alert alert-danger">
+                <div class="error-msg-lbl"
+                     >Hay un problema con la información enviada</div>
+                <div class="error-msg-detail"
+                     >Los errores han sido resaltados a continuación</div>
+                <p class="error-msg"></p>
+              </div>
+
+
+
+              <div
+                  class="form-group has-error "
+                  title="Enter some text"
+                  id="item-deformField1">
+
+                <label for="deformField1"
+                       class="control-label required"
+                       id="req-deformField1"
+                       >
+                  Identificación
+                </label>
+
+
+                <input type="text" name="text" value=""
+                       id="deformField1" class=" form-control "/>
+
+
+                <p class="help-block" id="error-deformField1">Requerido</p>
+
+                <p
+                    class="help-block" >
+                  Favor digite su identificación
+                </p>
+              </div>
+
+
+              <div class="form-group">
+
+                <button
+                    id="deformsubmit"
+                    name="submit"
+                    type="submit"
+                    class="btn btn-primary "
+                    value="submit">
+
+                  Submit
+                </button>
+
+              </div>
+
+            </fieldset>
+
+
+
+          </form>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- end: mockup -->
+
+    </div>
+
+    <div tal:comment="Emacs configuration"
+         tal:condition="nothing">
+      <!--
+          For Emacs:
+          Local Variables:
+          mode: nxml
+          eval: (rng-set-vacuous-schema)
+          coding: utf-8
+          End:
+      -->
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="${request.locale_name}" xml:lang="${request.locale_name}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:define-macro="layout"
+      i18n:domain="zipmedia"
+      >
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description"
+          content=""
+          tal:condition="exists: description"
+          tal:attributes="content description | default"
+          />
+    <meta name="author"
+          content=""
+          tal:condition="exists: author"
+          tal:attributes="content author | default"
+          />
+    <link rel="icon" href="${request.static_url('zipmedia:static/favicon.ico')}" />
+
+    <title tal:content="title | view.project | default"></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="${request.static_url('zipmedia:static/bootstrap/3.3.7/css/bootstrap.min.css')}"
+          rel="stylesheet" />
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="${request.static_url('zipmedia:static/bootstrap/3.3.7/css/ie10-viewport-bug-workaround.css')}"
+          rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="${request.static_url('zipmedia:static/theme.css')}"
+          rel="stylesheet" />
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+        <script src="${request.static_url('zipmedia:static/bootstrap/3.3.7/assets/js/ie8-responsive-file-warning.js')}"></script>
+    <![endif]-->
+    <script src="${request.static_url('zipmedia:static/bootstrap/3.3.7/js/ie-emulation-modes-warning.js')}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="${request.static_url('zipmedia:static/html5shiv/3.7.3/html5shiv.min.js')}"></script>
+        <script src="${request.static_url('zipmedia:static/respond/1.4.2/respond.min.js')}"></script>
+    <![endif]-->
+
+    <tal:block metal:define-slot="deform" />
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+
+            <tal:block repeat="tab python:[{'key':'search','value':'Home'},{'key':'about', 'value':'About'}]">
+
+              <li role="presentation" class="active"
+                  tal:define="myclass python:'active'
+                              if request.matched_route is not None and
+                              request.matched_route.name==tab['key']
+                              else None"
+                  tal:attributes="class myclass"
+                  >
+                <a href="${request.route_url(tab['key'])}"
+                   i18n:translate=""
+                   >${tab['value']}</a>
+              </li>
+
+              <!-- Dummy -->
+              <li role="presentation"
+                  tal:condition="nothing"
+                  i18n:translate="Home"
+                  >
+              <a href="${request.route_url('about')}">Home</a></li>
+
+              <li role="presentation"
+                  tal:condition="nothing"
+                  i18n:translate="About"
+                  ><a href="${request.route_url('about')}">About</a></li>
+
+            </tal:block>
+
+          </ul>
+        </nav>
+        <h3 class="text-muted" tal:content="view.project | default">ZipMedia</h3>
+      </div>
+
+      <div metal:define-slot="content">No content</div>
+
+      <footer class="footer">
+
+        <p>&#169; 2020 Tienda Linux S.A.S.</p>
+
+        <p tal:condition="exists: view.langs">
+          <tal:block repeat="lang view.langs">
+            <a href="${request.route_url('locale', language=lang)}">${lang}</a>
+            <span tal:condition="not: repeat.lang.end">|</span>
+          </tal:block>
+        </p>
+
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="${request.static_url('zipmedia:static/bootstrap/3.3.7/js/ie10-viewport-bug-workaround.js')}"></script>
+
+    <script type="text/javascript">
+      deform.load()
+    </script>
+
+    <div tal:comment="Emacs configuration"
+         tal:condition="nothing">
+      <!--
+          For Emacs:
+          Local Variables:
+          mode: nxml
+          eval: (rng-set-vacuous-schema)
+          coding: utf-8
+          End:
+      -->
+    </div>
+
+  </body>
+</html>

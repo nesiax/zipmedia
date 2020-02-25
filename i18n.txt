@@ -1,0 +1,19 @@
+lingua is the prefered option.
+
+i18n.sh is a script that populates everything.
+
+lingua.cfg is the configuration
+
+./i18n.sh # to create everything. (init or update)
+
+which is basically the same as run:
+
+python setup.py extract_messages
+
+./i18n.sh es # to create i18n for 'es' (init or update, update, compile)
+
+which is basically the same as run:
+
+python setup.py init_catalog -l es
+
+python setup.py compile_catalog

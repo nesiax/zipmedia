@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en" xml:lang="en"
+      tal:define="master load: main_template.xhtml"
+      metal:use-macro="master.macros.layout"
+      i18n:domain="zipmedia"
+      >
+  <head>
+      <title>Download</title>
+  </head>
+
+  <body>
+
+    <div metal:fill-slot="content">
+
+      <div class="panel panel-primary" tal:condition="exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title" tal:content="form_title | default"
+              i18n:translate=""
+              >Download</h3>
+        </div>
+        <div class="panel-body">
+          <div id="form" tal:content="structure form_rendered"/>
+        </div>
+      </div>
+
+
+      <!-- begin: mockup -->
+
+      <!-- No results -->
+
+      <div class="panel panel-primary" tal:condition="not: exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title">Demo: Hidden Widget</h3>
+        </div>
+        <div class="panel-body">
+          <div id="form"><form
+                             id="deform"
+                             method="POST"
+                             enctype="multipart/form-data"
+                             accept-charset="utf-8" class="deform"
+                             >
+
+            <fieldset class="deform-form-fieldset">
+              <input type="hidden" name="_charset_" />
+              <input type="hidden" name="__formid__" value="deform"/>
+              <label for="deformField1"
+                     class="control-label required"
+                     id="req-deformField1"
+                     >
+                Descarga
+              </label>
+              <input type="hidden" name="sneaky" value="true"
+                     id="deformField1"/>
+              <p
+                  class="help-block" >
+                No se encontraron resultados.
+              </p>
+              <div class="form-group">
+                <button
+                    id="deformsubmit"
+                    name="submit"
+                    type="submit"
+                    class="btn btn-primary "
+                    value="submit">
+                  Regresar
+                </button>
+              </div>
+            </fieldset>
+          </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Still processing -->
+
+      <div class="panel panel-primary" tal:condition="not: exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title">Demo: Hidden Widget</h3>
+        </div>
+        <div class="panel-body">
+          <div id="form"><form
+                             id="deform"
+                             method="POST"
+                             enctype="multipart/form-data"
+                             accept-charset="utf-8" class="deform"
+                             >
+
+            <fieldset class="deform-form-fieldset">
+              <input type="hidden" name="_charset_" />
+              <input type="hidden" name="__formid__" value="deform"/>
+              <label for="deformField1"
+                     class="control-label required"
+                     id="req-deformField1"
+                     >
+                Descarga
+              </label>
+              <input type="hidden" name="sneaky" value="true"
+                     id="deformField1"/>
+              <p
+                  class="help-block" >
+                El archivo esta siendo procesado, por favor espere ...
+              </p>
+              <div class="form-group">
+                <button
+                    id="deformsubmit"
+                    name="submit"
+                    type="submit"
+                    class="btn btn-primary "
+                    value="submit">
+                  Actualizar
+                </button>
+              </div>
+            </fieldset>
+          </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Ready to download -->
+
+      <div class="panel panel-primary" tal:condition="not: exists: form_rendered">
+        <div class="panel-heading">
+          <h3 class="panel-title">Demo: Hidden Widget</h3>
+        </div>
+        <div class="panel-body">
+          <div id="form"><form
+                             id="deform"
+                             method="POST"
+                             enctype="multipart/form-data"
+                             accept-charset="utf-8" class="deform"
+                             >
+
+            <fieldset class="deform-form-fieldset">
+              <input type="hidden" name="_charset_" />
+              <input type="hidden" name="__formid__" value="deform"/>
+              <label for="deformField1"
+                     class="control-label required"
+                     id="req-deformField1"
+                     >
+                Descarga
+              </label>
+              <input type="hidden" name="sneaky" value="true"
+                     id="deformField1"/>
+              <p
+                  class="help-block" >
+                El archivo esta listo para descarga.
+              </p>
+              <div class="form-group">
+                <button
+                    id="deformsubmit"
+                    name="submit"
+                    type="submit"
+                    class="btn btn-primary "
+                    value="submit">
+                  Descargar
+                </button>
+              </div>
+            </fieldset>
+          </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- end: mockup -->
+
+    </div>
+
+    <div tal:comment="Emacs configuration"
+         tal:condition="nothing">
+      <!--
+          For Emacs:
+          Local Variables:
+          mode: nxml
+          eval: (rng-set-vacuous-schema)
+          coding: utf-8
+          End:
+      -->
+    </div>
+
+  </body>
+</html>

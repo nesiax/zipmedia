@@ -1,0 +1,24 @@
+
+# adduser --home /opt/zipmedia --disabled-password zipmedia
+
+# login as zipmedia user:
+
+su - zipmedia
+
+# Create Virtual environment
+
+python3 -m venv env37
+
+# load environment
+
+. env37/bin/activate
+
+# download in 'src'
+
+git clone src
+cd src
+
+pip install --upgrade pip setuptools
+pip install "pyramid==1.10.4" ; pip install -e ".[testing]" ; pip install -e ".[dev]"
+
+# Raspberry PI users be user to not a duplicate 'localhost' entry in /etc/hosts

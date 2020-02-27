@@ -38,7 +38,7 @@ Form validation:
 
 Download:
 
-<p><img src="doc/screenshoots/search.png" alt="drawing" width="400"/></p>
+<p><img src="doc/screenshoots/download.png" alt="drawing" width="400"/></p>
 
 i18n spanish:
 

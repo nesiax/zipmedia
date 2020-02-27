@@ -14,6 +14,12 @@ The zip files can be served using this app (on the fly or static) or you can del
 
 The app works also behind a web server thourhg https. (Only tested on nginx).
 
+## Performance
+
+The on the fly zip creation don't work on a raspberry pi with limited memory (512Mb) so I decided to add the static zip server and use the 7-zip software that allows people in Windows to create the zip file on the server.
+
+However the zip created with 7-zip don't validate as a valid zip file so I skip this check while using that option.
+
 ## History
 
 I wrote this app to learn about pyramid while building a simple app that allows a user to share directories containing photos and videos of 500 MB size in average.

@@ -1,0 +1,47 @@
+# On Debian:
+
+pip install pastescript
+
+apt-get install nginx uwsgi-plugin-python3 uwsgi-plugin-python uwsgi-emperor uwsgi-core uwsgi
+
+adduser www-data zipmedia
+
+mkdir /opt/zipmedia/run
+
+cd /etc/uwsgi-emperor
+
+cat >> emperor.ini < 'EOF'
+# tyrant mode
+emperor-tyrant = true
+cap = setgid,setuid
+
+EOF
+
+cat >> vassals/zipmedia.cfg < 'EOF'
+[uwsgi]
+my_vassal_name = %n
+uid = zipmedia
+gid = zipmedia
+plugins = python3
+ini-paste-logged = /opt/zipmedia/src/production.ini
+virtualenv = /opt/zipmedia/env37
+EOF
+
+ln -sf zipmedia.cfg zipmedia.ini
+
+touch zipmedia.ini # restart
+
+# In nginx, add:
+
+upstream zipmedia_cluster {
+    server unix:/opt/zipmedia/run/production.sock;
+}
+
+server {
+[...]
+        location /zipmedia/ {
+            include /etc/nginx/uwsgi_params;
+            uwsgi_pass zipmedia_cluster;
+        }
+[...]
+}

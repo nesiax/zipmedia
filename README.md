@@ -12,7 +12,7 @@ You can add your own localizations using GNU gettext (.mo files) see `i18n.txt` 
 
 The zip files can be served using this app (on the fly or static) or you can delegate the function to your webserver on a specific location.
 
-The app works also behind a web server thourhg https. (Only tested on nginx).
+The app works also behind a web server using wsgi. (Tested with nginx and uwsgi), see `DEPLOYMENT.txt`
 
 ## History
 

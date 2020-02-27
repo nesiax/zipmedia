@@ -18,7 +18,7 @@ The app works also behind a web server thourhg https. (Only tested on nginx).
 
 I wrote this app to learn about pyramid while building a simple app that allows a user to share directories containing photos and videos of 500 MB size in average.
 
-The app is used at the flying sited that I am used to attend, so the pilots can copy the results of their camera from a computer to a network share in a Raspberry Pi Server via Samba and let the receiver download the directory or the zip file just using their id, simple and easy.
+The app is used at the flying sited that I am used to attend, so the pilots can copy the results of their camera from a computer to a network share in a Raspberry Pi Server via Samba and let the customer download the directory of photos and videos via a zip file just by using their id, simple and easy.
 
 ## Screenshoots
 

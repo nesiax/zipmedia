@@ -23,16 +23,20 @@ The app is used at the flying sited that I am used to attend, so the pilots can 
 ## Screenshoots
 
 Search:
-<img src="doc/screenshoots/search.png" alt="drawing" width="400"/>
+
+<p><img src="doc/screenshoots/search.png" alt="drawing" width="400"/></p>
 
 Form validation:
-<img src="doc/screenshoots/error.png" alt="drawing" width="400"/>
+
+<p><img src="doc/screenshoots/error.png" alt="drawing" width="400"/></p>
 
 Download:
-<img src="doc/screenshoots/search.png" alt="drawing" width="400"/>
+
+<p><img src="doc/screenshoots/search.png" alt="drawing" width="400"/></p>
 
 i18n spanish:
-<img src="doc/screenshoots/search_es.png" alt="drawing" width="400"/>
+
+<p><img src="doc/screenshoots/search_es.png" alt="drawing" width="400"/></p>
 
 ## Main tools used:
 
